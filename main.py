@@ -7,7 +7,10 @@ import datetime
 import time, datetime
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
+<<<<<<< HEAD
 from aiogram.utils.executor import start_webhook
+=======
+>>>>>>> dac40d4... Initial Commit
 @dp.message_handler(commands=['start'])
 async def start_msg(message: types.Message):
     if message.from_user.id == CHATID:
@@ -65,6 +68,7 @@ async def current(call: types.CallbackQuery):
         sum1+= round(current*0.87, 2)*item.count
         txt+= item.name + ' ('+str(round((round(current*0.87, 2)/item.buy_sum - 1) * 100, 2))+'%) ' + str(round(current*0.87, 2)) + ' pуб.\n\n'
     await bot.send_message(call.from_user.id, txt + 'Текущий баланс: ' + str(round(sum1, 2))+ ' руб.')
+<<<<<<< HEAD
 
 async def on_startup(dp):
     await bot.set_webhook(WEBHOOK_URL,drop_pending_updates=True)
@@ -76,6 +80,7 @@ async def hook_set():
         quit()
     await bot.set_webhook(WEBHOOK_URL)
     print(await bot.get_webhook_info())
+asyncio.run(hook_set())
 start_webhook(
     dispatcher=dp,
     webhook_path=WEBHOOK_PATH,
@@ -84,3 +89,6 @@ start_webhook(
     host=WEBAPP_HOST,
     port=WEBAPP_PORT,
 )
+=======
+executor.start_polling(dp)
+>>>>>>> dac40d4... Initial Commit
