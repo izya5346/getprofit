@@ -4,8 +4,6 @@ from aiogram.types import *
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from telethon.sync import TelegramClient
-from telethon import functions
 from steam_community_market import Market, AppID
 import asyncio
 import os
@@ -26,7 +24,7 @@ WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
 WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = int(os.getenv('PORT')
+WEBAPP_PORT = int(os.getenv('PORT'))
 CHATID = 357536913
 FE = 0.13
 storage = MemoryStorage()
