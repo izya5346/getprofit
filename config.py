@@ -26,7 +26,7 @@ WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
 WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = int(os.getenv('PORT')
+WEBAPP_PORT = int(os.getenv('PORT'))
 CHATID = 357536913
 FE = 0.13
 storage = MemoryStorage()
