@@ -1,0 +1,3 @@
+aiogram==2.11.2
+steam-community-market==1.2.3
+
