@@ -4,8 +4,6 @@ from aiogram.types import *
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from telethon.sync import TelegramClient
-from telethon import functions
 from steam_community_market import Market, AppID
 import asyncio
 import os
