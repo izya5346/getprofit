@@ -88,13 +88,13 @@ async def deling(call: types.CallbackQuery):
     items = models.Item.select()
     list_items = InlineKeyboardMarkup()
     for item in items:
-        list_items.add(InlineKeyboardButton(item.name, callback_data = 'del:'+ item.id))
+        list_items.add(InlineKeyboardButton(item.name, callback_data = 'del:'+ str(item.id)))
     list_items.add(back)
     await bot.send_message(call.from_user.id, 'Выберите предмет который хотите удалить', reply_markup = list_items)
     
 @dp.callback_query_handler(del_callback.filter())
 async def deleted(call: types.CallbackQuery, callback_data: dict):
-    models.Item.delete_by_id(callback_data['id'])
+    models.Item.delete_by_id(int(callback_data['id']))
     await bot.send_message(call.from_user.id, 'Успешно удалено', reply_markup = mainmenu)
 async def on_startup(dp):
     await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
