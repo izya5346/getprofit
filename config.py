@@ -27,7 +27,7 @@ WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 WEBAPP_HOST = '0.0.0.0'
 WEBAPP_PORT = int(os.getenv('PORT'))
 CHATID = 357536913
-FE = 0.13
+FE = 0.15
 del_callback = CallbackData('del', 'id')
 storage = MemoryStorage()
 bot = Bot(token='1511765201:AAGHNpZK7S4Pz8jiG29IlQ6cv9vC5uttl6o')
