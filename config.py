@@ -4,6 +4,7 @@ from aiogram.types import *
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from aiogram.utils.callback_data import CallbackData
 from steam_community_market import Market, AppID
 import asyncio
 import os
@@ -27,19 +28,31 @@ WEBAPP_HOST = '0.0.0.0'
 WEBAPP_PORT = int(os.getenv('PORT'))
 CHATID = 357536913
 FE = 0.13
+del_callback = CallbackData('del', 'id')
 storage = MemoryStorage()
 bot = Bot(token='1511765201:AAGHNpZK7S4Pz8jiG29IlQ6cv9vC5uttl6o')
 dp = Dispatcher(bot, storage=storage)
-back = InlineKeyboardButton('Назад', callback_data= 'back')
+back = InlineKeyboardButton('Назад', callback_data='back')
 mainmenu = InlineKeyboardMarkup()
-mainmenu.add(InlineKeyboardButton('Добавить предмет', callback_data = 'add_item'))
-mainmenu.add(InlineKeyboardButton('Удалить Предмет',callback_data = 'del_item'))
-mainmenu.add(InlineKeyboardButton('Текущий баланс', callback_data = 'current_balance'))
+mainmenu.add(InlineKeyboardButton(
+    'Добавить предмет', callback_data='add_item'))
+mainmenu.add(InlineKeyboardButton('Удалить предмет', callback_data='del_item'))
+mainmenu.add(InlineKeyboardButton(
+    'Текущий баланс', callback_data='current_balance'))
 market = Market('RUB')
 add_again = InlineKeyboardMarkup()
-add_again.add(InlineKeyboardButton('Добавить ещё предмет', callback_data = 'add_item'))
+add_again.add(InlineKeyboardButton(
+    'Добавить ещё предмет', callback_data='add_item'))
 add_again.add(back)
+
+
 class add_item_state(StatesGroup):
+    name = State()
+    buy_sum = State()
+    count = State()
+
+
+class del_item_state(StatesGroup):
     name = State()
     buy_sum = State()
     count = State()
