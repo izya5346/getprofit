@@ -96,7 +96,7 @@ async def deling(call: types.CallbackQuery):
 async def deleted(call: types.CallbackQuery, callback_data: dict):
     models.Item.delete_by_id(int(callback_data['id']))
     await bot.send_message(call.from_user.id, 'Успешно удалено', reply_markup = mainmenu)
-@dp.callback_query_handler(text='del_item') 
+@dp.callback_query_handler(text='back') 
 async def backed(call: types.CallbackQuery):
     await bot.send_message(call.from_user.id, 'Здарова пидрила', reply_markup=mainmenu)
 async def on_startup(dp):
